@@ -1,9 +1,7 @@
 package com.ivanbo97.mqttclient.callback;
 
 import android.util.Log;
-
 import com.ivanbo97.mqttclient.MainActivity;
-
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;

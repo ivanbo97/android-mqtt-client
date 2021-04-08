@@ -2,8 +2,6 @@ package com.ivanbo97.mqttclient.callback;
 
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ivanbo97.mqttclient.MainActivity;
 import com.ivanbo97.mqttclient.actions.MqttClientActions;
 import com.ivanbo97.mqttclient.chart.SensorDataChart;
