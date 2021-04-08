@@ -7,6 +7,7 @@ buildscript {
         maven {
             url "https://repo.eclipse.org/content/repositories/paho-releases/"
         }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
@@ -20,7 +21,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "https://jitpack.io" }
     }
 }
 
