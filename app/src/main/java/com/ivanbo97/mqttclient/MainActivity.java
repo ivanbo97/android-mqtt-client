@@ -2,29 +2,15 @@ package com.ivanbo97.mqttclient;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.ivanbo97.mqttclient.actions.MqttClientActions;
-import com.ivanbo97.mqttclient.callback.AndroidMqttClientCallback;
-import com.ivanbo97.mqttclient.callback.ConnectionTokenCallback;
 import com.ivanbo97.mqttclient.chart.SensorDataChart;
 
-import org.eclipse.paho.android.service.MqttAndroidClient;
-import org.eclipse.paho.client.mqttv3.IMqttActionListener;
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
-import org.eclipse.paho.client.mqttv3.IMqttToken;
-
-import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
 
