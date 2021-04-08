@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Log.w("Mqtt", "Subscribed fail!");
+                                Log.w("Mqttt", "Subscribed fail!");
                             }
                         });
 
