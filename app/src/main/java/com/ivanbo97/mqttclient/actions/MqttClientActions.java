@@ -21,10 +21,10 @@ public class MqttClientActions {
 
     private LineChart lineChart;
     private SensorDataChart dataChart;
-    private TextView dataReceived ;
+    private TextView dataReceived;
     private MainActivity mainActivity;
 
-    public MqttClientActions(LineChart lineChart, SensorDataChart dataChart,TextView dataReceived, MainActivity mainActivity) {
+    public MqttClientActions(LineChart lineChart, SensorDataChart dataChart, TextView dataReceived, MainActivity mainActivity) {
         this.lineChart = lineChart;
         this.dataChart = dataChart;
         this.dataReceived = dataReceived;
@@ -32,18 +32,18 @@ public class MqttClientActions {
         clientInit();
     }
 
-    public void clientInit(){
+    public void clientInit() {
         String clientId = MqttClient.generateClientId();
-         mqttClient = new MqttAndroidClient(MainActivity.getMainActivityContext(), "tcp://broker.hivemq.com:1883",
-                        clientId);
-        MqttCallbackExtended callback = new AndroidMqttClientCallback(dataReceived,dataChart,this);
+        mqttClient = new MqttAndroidClient(MainActivity.getMainActivityContext(), "tcp://broker.hivemq.com:1883",
+                clientId);
+        MqttCallbackExtended callback = new AndroidMqttClientCallback(dataReceived, dataChart, this);
 
         mqttClient.setCallback(callback);
     }
 
-    public void clientConnect(){
+    public void clientConnect() {
         try {
-            ConnectionTokenCallback connectionTokenCallback = new ConnectionTokenCallback(mqttClient,mainActivity);
+            ConnectionTokenCallback connectionTokenCallback = new ConnectionTokenCallback(mqttClient, mainActivity);
             IMqttToken token = mqttClient.connect();
             token.setActionCallback(connectionTokenCallback);
         } catch (MqttException e) {
