@@ -2,6 +2,8 @@ package com.ivanbo97.mqttclient.callback;
 
 import android.util.Log;
 
+import com.ivanbo97.mqttclient.MainActivity;
+
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
@@ -10,9 +12,11 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 public class ConnectionTokenCallback implements IMqttActionListener {
 
     private MqttAndroidClient client;
+    MainActivity mainActivity;
 
-    public ConnectionTokenCallback(MqttAndroidClient client) {
+    public ConnectionTokenCallback(MqttAndroidClient client,MainActivity mainActivity) {
         this.client = client;
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -31,5 +35,7 @@ public class ConnectionTokenCallback implements IMqttActionListener {
     public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
         // Something went wrong e.g. connection timeout or firewall problems
         Log.d("INFO", "onFailure");
+        MainActivity.connectionToBrokerFailed();
+        mainActivity.getMqttClientActions().clientConnect();
     }
 }
