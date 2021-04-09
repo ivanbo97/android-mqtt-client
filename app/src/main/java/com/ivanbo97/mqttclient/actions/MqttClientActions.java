@@ -39,7 +39,7 @@ public class MqttClientActions {
     public void clientInit() {
         String clientId = MqttClient.generateClientId();
         mqttClient = new MqttAndroidClient(MainActivity.getMainActivityContext(), "tcp://broker.hivemq.com:1883",
-                clientId);
+                 clientId);
         MqttCallbackExtended callback = new AndroidMqttClientCallback(dataReceived, dataChart, this);
 
         mqttClient.setCallback(callback);
