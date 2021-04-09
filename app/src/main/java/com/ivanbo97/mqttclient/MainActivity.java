@@ -11,6 +11,8 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.ivanbo97.mqttclient.actions.MqttClientActions;
 import com.ivanbo97.mqttclient.chart.SensorDataChart;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView dataReceived;
@@ -49,5 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
     public MqttClientActions getMqttClientActions() {
         return mqttClientActions;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            mqttClientActions.getMqttClient().disconnect(2);
+        } catch (MqttException e){
+            e.printStackTrace();
+        }
     }
 }

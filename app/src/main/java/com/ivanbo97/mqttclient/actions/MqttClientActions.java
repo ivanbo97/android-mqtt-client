@@ -32,6 +32,10 @@ public class MqttClientActions {
         clientInit();
     }
 
+    public MqttAndroidClient getMqttClient() {
+        return mqttClient;
+    }
+
     public void clientInit() {
         String clientId = MqttClient.generateClientId();
         mqttClient = new MqttAndroidClient(MainActivity.getMainActivityContext(), "tcp://broker.hivemq.com:1883",
@@ -50,4 +54,6 @@ public class MqttClientActions {
             e.printStackTrace();
         }
     }
+
+
 }

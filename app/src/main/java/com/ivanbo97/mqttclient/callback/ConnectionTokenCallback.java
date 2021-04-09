@@ -9,6 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class ConnectionTokenCallback implements IMqttActionListener {
 
+
     private MqttAndroidClient client;
     MainActivity mainActivity;
 
