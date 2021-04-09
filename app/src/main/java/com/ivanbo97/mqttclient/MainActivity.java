@@ -9,9 +9,13 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.ivanbo97.mqttclient.actions.MqttClientActions;
+import com.ivanbo97.mqttclient.api.PlantApiConnector;
 import com.ivanbo97.mqttclient.chart.SensorDataChart;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private SensorDataChart dataChart;
     private static Context mainActivityContext;
     private MqttClientActions mqttClientActions;
+    private PlantApiConnector plantApiConnector;
+    private List<String> jsonResponses;
 
     public static Context getMainActivityContext() {
         return mainActivityContext;
@@ -29,13 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        jsonResponses = new ArrayList<>();
         mainActivityContext = getApplicationContext();
+        plantApiConnector = new PlantApiConnector(jsonResponses);
         setContentView(R.layout.activity_main);
         dataReceived = (TextView) findViewById(R.id.dataReceived);
         lineChart = (LineChart) findViewById(R.id.chart);
         dataChart = new SensorDataChart(lineChart);
         mqttClientActions = new MqttClientActions(lineChart, dataChart, dataReceived, this);
         mqttClientActions.clientConnect();
+        plantApiConnector.connect();
     }
 
     public static void connectionLostToast() {
